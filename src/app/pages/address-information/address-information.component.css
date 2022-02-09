@@ -1,0 +1,104 @@
+h2,
+h3 {
+  text-align: center;
+}
+
+main {
+  width: 100%;
+}
+
+section {
+  width: 70%;
+  margin: auto;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+th {
+  font-weight: bold;
+}
+
+th,
+td {
+  border: 1px solid black;
+  width: 25%;
+}
+
+.modify {
+  display: flex;
+}
+
+.more,
+.edit,
+.delete {
+  font: inherit;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  font-weight: bold;
+}
+
+.options {
+  position: fixed;
+  background-color: lightblue;
+  top: 15%;
+  width: 10%;
+  right: 7%;
+}
+
+.options ul {
+  list-style-type: none;
+  text-align: left;
+  font-weight: bold;
+  margin-left: -1rem;
+}
+
+.options ul li {
+  cursor: pointer;
+}
+
+.more-info {
+  display: flex;
+  justify-content: space-between;
+  width: 91%;
+  border: 1px solid #afa9a9;
+  border-top: none;
+  height: 30vh;
+}
+
+.more-info ul {
+  list-style-type: none;
+  width: 40%;
+  font-size: 1.2rem;
+  align-self: center;
+}
+
+.people {
+  width: 100%;
+  text-align: center;
+}
+
+.people table {
+  width: 80%;
+  margin: auto;
+}
+
+.people-list {
+  height: 40%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.selected {
+  background-color: black;
+  border-radius: 100%;
+  font-size: 0.5rem;
+  height: 14px;
+  margin: 0.4rem;
+  width: 14px;
+}

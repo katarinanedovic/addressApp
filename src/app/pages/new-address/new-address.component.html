@@ -1,0 +1,85 @@
+<main>
+  <form (ngSubmit)="addressSubmitted()" [formGroup]="form">
+    <div class="controls">
+      <section class="address">
+        <label>Region <input formControlName="region" type="text" /></label>
+        <ng-template
+          [ngIf]="form.get('region').touched && !form.get('region').valid"
+          ><h6>Region can't have more than 20 characters</h6></ng-template
+        >
+        <label
+          >City<span class="required">*</span
+          ><input formControlName="city" type="text"
+        /></label>
+        <ng-template
+          [ngIf]="form.get('city').touched && !form.get('city').valid"
+          ><h6>
+            City must have more than 2 and less than 30 characters
+          </h6></ng-template
+        >
+        <label
+          >Street<span class="required">*</span>
+          <input formControlName="street" type="text"
+        /></label>
+        <label
+          >House number<span class="required">*</span>
+          <input formControlName="houseNumber" type="number"
+        /></label>
+        <label
+          >Post number<span class="required">*</span>
+          <input formControlName="postNumber" type="text"
+        /></label>
+        <ng-template
+          [ngIf]="
+            form.get('postNumber').touched && !form.get('postNumber').valid
+          "
+          ><h6 style="margin-right: 1.3rem">
+            Post number must have 5 characters
+          </h6></ng-template
+        >
+      </section>
+      <div *ngIf="peopleArray().length > 0" class="people-controls-list">
+        <div
+          formArrayName="people"
+          *ngFor="let person of peopleArray(); let i = index"
+        >
+          <section [formGroupName]="i" class="people">
+            <label
+              >Name<span class="required">*</span>
+              <input formControlName="name" type="text"
+            /></label>
+            <label
+              >Last Name<span class="required">*</span>
+              <input formControlName="lastName" type="text"
+            /></label>
+            <label
+              >UCIN<span class="required">*</span>
+              <input formControlName="UCIN" type="text"
+            /></label>
+            <ng-template
+              [ngIf]="person.get('UCIN').touched && !person.get('UCIN').valid"
+              ><h6 style="margin-right: 3.5rem">
+                UCIN must have 13 characters
+              </h6></ng-template
+            >
+          </section>
+          <button
+            (click)="removeCitizen(i)"
+            class="remove-person"
+            type="button"
+          >
+            Remove person
+          </button>
+        </div>
+      </div>
+
+      <section class="add-people">
+        <h3>
+          Add people <button (click)="addCitizen()" type="button">+</button>
+        </h3>
+      </section>
+    </div>
+
+    <button [disabled]="!form.valid" type="submit">Submit</button>
+  </form>
+</main>
