@@ -2,83 +2,97 @@
   <h2>Addresses</h2>
   <section>
     <table>
-      <tr>
-        <th>City</th>
-        <th>Street</th>
-        <th>House number</th>
-        <th>People</th>
-      </tr>
+      <tbody>
+        <tr>
+          <th>City</th>
+          <th>Street</th>
+          <th>House number</th>
+          <th>People</th>
+        </tr>
+      </tbody>
 
-      <tr *ngFor="let address of addressList; let i = index">
-        <td>{{ address.city }}</td>
-        <td>{{ address.street }}</td>
-        <td>{{ address.houseNumber }}</td>
-        <td>{{ address.people.length }}</td>
-        <div class="modify">
-          <button
-            title="Show more information"
-            (click)="showMoreInformation(address)"
-            class="more"
-            [disabled]="address !== currentAddress && isMoreInformationShown"
-            [ngClass]="{
-              selected: address === currentAddress && isMoreInformationShown
-            }"
-            [class.selected]="
-              address === currentAddress && isMoreInformationShown
-            "
-          >
-            ⭘
-          </button>
-          <hr />
-          <button title="Delete" (click)="deleteAddress(i)" class="delete">
-            X
-          </button>
-          <hr />
-          <button title="Edit" (click)="editAddress(i)" class="edit">✎</button>
-        </div>
-      </tr>
-    </table>
+      <tbody *ngFor="let address of addressList; let i = index">
+        <tr>
+          <td>{{ address.city }}</td>
+          <td>{{ address.street }}</td>
+          <td>{{ address.houseNumber }}</td>
+          <td>{{ address.people.length }}</td>
+          <div class="modify">
+            <button
+              title="Show more information"
+              (click)="showMoreInformation(address)"
+              class="more"
+              [disabled]="address !== currentAddress && isMoreInformationShown"
+              [ngClass]="{
+                selected: address === currentAddress && isMoreInformationShown
+              }"
+            >
+              ⭘
+            </button>
+            <hr />
+            <button
+              [disabled]="isMoreInformationShown"
+              title="Delete"
+              (click)="deleteAddress(i)"
+              class="delete"
+            >
+              X
+            </button>
+            <hr />
+            <button title="Edit" (click)="editAddress(i)" class="edit">
+              ✎
+            </button>
+          </div>
+        </tr>
 
-    <ng-template [ngIf]="isMoreInformationShown">
-      <div [@popUp] class="more-info">
-        <ul>
-          <li *ngIf="currentAddress.region">
-            Region: <span>{{ currentAddress.region }}</span>
-          </li>
-          <li>
-            Post number:
-            <span>{{ currentAddress.postNumber }}</span>
-          </li>
-        </ul>
-        <hr />
-        <div
-          *ngIf="currentAddress.people.length > 0; else noPeople"
-          class="people"
+        <ng-template
+          [ngIf]="address === currentAddress && isMoreInformationShown"
         >
-          <h3>People</h3>
-          <div class="people-list">
-            <table>
-              <tr>
-                <th>Name</th>
-                <th>Last Name</th>
-                <th>UCIN</th>
-              </tr>
-              <tr *ngFor="let person of currentAddress.people">
-                <td>{{ person.name }}</td>
-                <td>{{ person.lastName }}</td>
-                <td>{{ person.UCIN }}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
+          <tr [@popUp]>
+            <td>
+              <div class="address-details">
+                <p *ngIf="address.region">
+                  Region: <span>{{ address.region }}</span>
+                </p>
 
-        <ng-template #noPeople>
-          <div class="people">
-            <h3>No one lives on this address</h3>
-          </div>
+                <p>
+                  Post number:
+                  <span>{{ address.postNumber }}</span>
+                </p>
+              </div>
+            </td>
+            <td colspan="3">
+              <div
+                *ngIf="address.people.length > 0; else noPeople"
+                class="people"
+              >
+                <h3>People</h3>
+                <div class="people-list">
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Last Name</th>
+                      <th>UCIN</th>
+                    </tr>
+                    <tr *ngFor="let person of address.people">
+                      <td>{{ person.name }}</td>
+                      <td>{{ person.lastName }}</td>
+                      <td>{{ person.UCIN }}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+              <ng-template #noPeople>
+                <div class="people">
+                  <h3>No one lives on this address</h3>
+                </div>
+              </ng-template>
+            </td>
+          </tr>
         </ng-template>
-      </div>
-    </ng-template>
+      </tbody>
+    </table>
   </section>
 </main>
 <ng-template #noAddress> <h2>Add your addresses</h2></ng-template>

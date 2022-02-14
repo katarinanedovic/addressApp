@@ -62,22 +62,6 @@ td {
   cursor: pointer;
 }
 
-.more-info {
-  display: flex;
-  justify-content: space-between;
-  width: 91%;
-  border: 1px solid #afa9a9;
-  border-top: none;
-  height: 30vh;
-}
-
-.more-info ul {
-  list-style-type: none;
-  width: 40%;
-  font-size: 1.2rem;
-  align-self: center;
-}
-
 .people {
   width: 100%;
   text-align: center;
@@ -89,7 +73,7 @@ td {
 }
 
 .people-list {
-  height: 40%;
+  height: 5rem;
   overflow: hidden;
   overflow-y: scroll;
 }
