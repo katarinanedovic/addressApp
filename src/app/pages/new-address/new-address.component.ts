@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Citizen } from 'src/app/core/models/citizen.model';
+
 import { FacadeService } from 'src/app/facade/facade.service';
 
 @Component({

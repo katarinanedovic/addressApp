@@ -7,9 +7,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { distinctUntilChanged, map } from 'rxjs';
 import { Address } from 'src/app/core/models/address.model';
-import { State } from 'src/app/core/services/state/state.service';
 import { FacadeService } from 'src/app/facade/facade.service';
 import { SubSink } from 'subsink';
 
